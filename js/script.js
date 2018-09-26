@@ -1,14 +1,21 @@
 // FSJS - Random Quote Generator
-
-// Create the array of quote objects and name it quotes
-
-
-
-// Create the getRandomQuuote function and name it getRandomQuote
-
+const fetchData = url => {
+    fetch(url)
+    .then(res => res.json())
+    .then(data =>  createQuote(data))
+}
 
 
-// Create the printQuote funtion and name it printQuote
+const printQuote = () => {
+    fetchData("https://talaikis.com/api/quotes/random/");
+    console.log("done");
+}
+
+const createQuote = data => {
+    document.querySelector(".quote").textContent = data.quote;
+    document.querySelector(".source").textContent = data.author;
+}
+
 
 
 
